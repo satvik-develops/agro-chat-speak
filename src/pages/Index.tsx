@@ -61,15 +61,15 @@ const Index = () => {
       <main className="ambient-bg min-h-screen px-4 py-10 md:py-14">
         <section className="mx-auto max-w-4xl rounded-3xl bg-card/60 p-6 backdrop-blur-[2px] ring-1 ring-border/60">
           <div className="text-center py-8 md:py-10">
-            <h1 className="text-3xl md:text-5xl font-semibold tracking-tight mb-3">
+            <h1 className="text-2xl sm:text-3xl md:text-5xl font-semibold tracking-tight mb-3 leading-tight">
               {greeting}, {userName}
             </h1>
-            <p className="text-muted-foreground text-base md:text-lg">Can I help you with anything?</p>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground">Can I help you with anything?</p>
           </div>
 
           <div className="mx-auto mb-8 grid max-w-3xl grid-cols-2 gap-3 md:flex md:flex-wrap md:justify-center">
             {suggestions.map((text) => (
-              <Button key={text} variant="pill" onClick={() => setMessage(text)}>
+              <Button key={text} variant="pill" className="text-xs sm:text-sm" onClick={() => setMessage(text)}>
                 {text}
               </Button>
             ))}
@@ -81,7 +81,7 @@ const Index = () => {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Type your message…"
               rows={4}
-              className="w-full resize-none rounded-2xl border bg-card/90 p-4 pr-36 text-base leading-relaxed shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="w-full resize-none rounded-2xl border bg-card/90 p-4 pr-36 text-sm sm:text-base leading-relaxed shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             />
 
             <div className="pointer-events-none absolute inset-y-0 right-2 flex items-end pb-2">
@@ -104,7 +104,7 @@ const Index = () => {
             </div>
           </div>
 
-          <p className="mx-auto max-w-3xl text-center text-xs text-muted-foreground">
+          <p className="mx-auto max-w-3xl text-center text-xs sm:text-sm text-muted-foreground">
             AgriVoice might make mistakes. Please double‑check important information.
           </p>
         </section>

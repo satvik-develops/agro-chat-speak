@@ -13,8 +13,8 @@ const LiveVoiceOverlay = ({ open, subtitles, onEnd }: LiveVoiceOverlayProps) => 
     <Dialog open={open}>
       <DialogContent className="sm:max-w-[520px] rounded-2xl">
         <DialogHeader>
-          <DialogTitle className="text-center">Live Voice</DialogTitle>
-          <DialogDescription className="text-center">You are connected. Speak naturally — we will transcribe in real time.</DialogDescription>
+          <DialogTitle className="text-center text-lg sm:text-xl">Live Voice</DialogTitle>
+          <DialogDescription className="text-center text-sm sm:text-base">You are connected. Speak naturally — we will transcribe in real time.</DialogDescription>
         </DialogHeader>
 
         <div className="flex items-end justify-center gap-1 py-6">
@@ -27,7 +27,7 @@ const LiveVoiceOverlay = ({ open, subtitles, onEnd }: LiveVoiceOverlayProps) => 
           ))}
         </div>
 
-        <div className="min-h-12 rounded-xl bg-accent/60 px-4 py-3 text-center text-sm text-accent-foreground">
+        <div className="min-h-12 rounded-xl bg-accent/60 px-4 py-3 text-center text-xs sm:text-sm text-accent-foreground">
           {subtitles || "Listening…"}
         </div>
 
