@@ -1,4 +1,4 @@
-import { Mic } from "lucide-react";
+import { AudioLines } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -14,11 +14,11 @@ const VoiceButton = ({ active, onClick, className }: VoiceButtonProps) => {
       aria-pressed={active}
       aria-label={active ? "Disable voice" : "Enable voice"}
       variant="voice"
-      size="icon-xl"
+      size="icon"
       onClick={onClick}
       className={cn(active && "ring-2 ring-primary/40", className)}
     >
-      <Mic className={cn(active ? "animate-pulse" : "")} />
+      <AudioLines className={cn(active ? "animate-pulse" : "")} />
       <span className="sr-only">Voice</span>
     </Button>
   );

@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import VoiceButton from "@/components/chat/VoiceButton";
 import LiveVoiceOverlay from "@/components/chat/LiveVoiceOverlay";
-import { Camera, Send } from "lucide-react";
+import { Camera, SendHorizontal } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLiveKitVoice } from "@/hooks/useLiveKitVoice";
 
@@ -81,11 +81,11 @@ const Index = () => {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Type your message…"
               rows={4}
-              className="w-full resize-none rounded-2xl border bg-card/90 p-4 pr-28 text-base leading-relaxed shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="w-full resize-none rounded-2xl border bg-card/90 p-4 pr-36 text-base leading-relaxed shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             />
 
             <div className="pointer-events-none absolute inset-y-0 right-2 flex items-end pb-2">
-              <div className="pointer-events-auto flex items-center gap-2">
+              <div className="pointer-events-auto flex items-center gap-2 mb-2">
                 <input
                   type="file"
                   accept="image/*"
@@ -96,14 +96,11 @@ const Index = () => {
                 <Button variant="outline" size="icon" aria-label="Attach image" onClick={onPickImage}>
                   <Camera />
                 </Button>
+                <VoiceButton active={active} onClick={onToggleVoice} />
                 <Button variant="default" size="icon" aria-label="Send" onClick={onSend}>
-                  <Send />
+                  <SendHorizontal />
                 </Button>
               </div>
-            </div>
-
-            <div className="mt-4 flex items-center justify-center gap-3 md:absolute md:inset-y-0 md:-right-24 md:my-auto">
-              <VoiceButton active={active} onClick={onToggleVoice} />
             </div>
           </div>
 
