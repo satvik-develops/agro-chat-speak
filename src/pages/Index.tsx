@@ -81,7 +81,7 @@ const Index = () => {
               onChange={(e) => setMessage(e.target.value)}
               placeholder="Type your message…"
               rows={4}
-              className="w-full resize-none rounded-2xl border bg-card/90 p-4 pr-36 text-sm sm:text-base leading-relaxed shadow-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              className="w-full resize-none rounded-2xl border bg-card/90 p-4 pr-36 text-sm sm:text-base leading-relaxed shadow-soft transition-all duration-300 placeholder:text-sm sm:placeholder:text-base placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:shadow-glow focus-visible:border-primary/30"
             />
 
             <div className="pointer-events-none absolute inset-y-0 right-2 flex items-end pb-2">
