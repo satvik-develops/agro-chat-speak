@@ -6,6 +6,8 @@ import LiveVoiceOverlay from "@/components/chat/LiveVoiceOverlay";
 import { Camera, SendHorizontal } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLiveKitVoice } from "@/hooks/useLiveKitVoice";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { ChatList, ChatMessage } from "@/components/chat/ChatList";
 
 const suggestions = [
   "Browse products",
@@ -18,6 +20,7 @@ const Index = () => {
   const [message, setMessage] = useState("");
   const { toast } = useToast();
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
 
   const userName = "Farmer"; // TODO: wire to auth/profile when available
   const greeting = useMemo(() => {
@@ -30,10 +33,19 @@ const Index = () => {
   const { active, start, stop, subtitles, sendText, uploadImage } = useLiveKitVoice({ userName });
 
   const onSend = async () => {
-    if (!message.trim()) return;
-    await sendText(message.trim());
+    const text = message.trim();
+    if (!text) return;
+
+    const userMsg: ChatMessage = { id: crypto.randomUUID(), role: "user", content: text };
+    setMessages((prev) => [...prev, userMsg]);
+
+    await sendText(text);
     toast({ title: "Sent", description: "Your message was sent to AgriVoice." });
     setMessage("");
+
+    // Placeholder assistant reply to render chat after sending
+    const botMsg: ChatMessage = { id: crypto.randomUUID(), role: "assistant", content: "Got it! I’m on it." };
+    setMessages((prev) => [...prev, botMsg]);
   };
 
   const onPickImage = () => fileInputRef.current?.click();
@@ -73,6 +85,12 @@ const Index = () => {
                 {text}
               </Button>
             ))}
+          </div>
+
+          <div className="mx-auto mb-6 max-w-3xl animate-fade-in">
+            <ScrollArea className="h-[40vh] rounded-2xl border bg-card/60 p-4 shadow-soft">
+              <ChatList messages={messages} />
+            </ScrollArea>
           </div>
 
           <div className="relative mx-auto mb-6 max-w-3xl">
