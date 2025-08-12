@@ -1,6 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Bot, User } from "lucide-react";
 
 export type ChatMessage = {
   id: string;
@@ -42,7 +43,7 @@ export const ChatList: React.FC<ChatListProps> = ({ messages }) => {
           >
             {!isUser && (
               <Avatar className="size-8 shrink-0 shadow-sm ring-1 ring-border">
-                <AvatarFallback className="bg-muted text-foreground">AI</AvatarFallback>
+                <AvatarFallback className="bg-muted text-foreground"><Bot className="h-4 w-4" /></AvatarFallback>
               </Avatar>
             )}
 
@@ -59,7 +60,7 @@ export const ChatList: React.FC<ChatListProps> = ({ messages }) => {
 
             {isUser && (
               <Avatar className="size-8 shrink-0 shadow-sm ring-1 ring-border">
-                <AvatarFallback className="bg-primary/15 text-primary">U</AvatarFallback>
+                <AvatarFallback className="bg-primary/15 text-primary"><User className="h-4 w-4" /></AvatarFallback>
               </Avatar>
             )}
           </li>

@@ -10,7 +10,7 @@ interface LiveVoiceOverlayProps {
 
 const LiveVoiceOverlay = ({ open, subtitles, onEnd }: LiveVoiceOverlayProps) => {
   return (
-    <Dialog open={open}>
+    <Dialog open={open} onOpenChange={(isOpen) => { if (!isOpen) onEnd(); }}>
       <DialogContent className="sm:max-w-[520px] rounded-2xl">
         <DialogHeader>
           <DialogTitle className="text-center text-lg sm:text-xl">Live Voice</DialogTitle>
