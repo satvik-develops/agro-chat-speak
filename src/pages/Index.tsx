@@ -97,6 +97,12 @@ const Index = () => {
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  onSend();
+                }
+              }}
               placeholder="Type your message…"
               rows={4}
               className="w-full resize-none rounded-2xl border bg-card/90 p-4 pr-36 text-sm sm:text-base leading-relaxed shadow-soft transition-all duration-300 placeholder:text-sm sm:placeholder:text-base placeholder:text-muted-foreground/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:shadow-glow focus-visible:border-primary/30"
